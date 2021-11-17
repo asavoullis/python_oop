@@ -17,6 +17,15 @@
 # @staticmethod
 
 
+# 	CLASS
+# a blueprint or the design of an entity
+# which defines the core properties and functions
+# a logical definition or a type
+# Male is a class where Alkis is the object - object with the name Alkis
+
+# 	Object
+# An object is an instance of a class which has physical existance
+
 #   position, name, age, level, salary
 # software engineers
 se1 = ['Software Enginer', 'Max', 20, 'Junior', 5000]
@@ -25,6 +34,7 @@ se3 = ['Software Engineer', 'Lisa', 27, 'Senior', 7000]
 
 #  designer
 d1 = ['Designer', 'Philipp']
+
 
 
 # class - a blueprint of this data structure
@@ -119,15 +129,22 @@ print(SoftwareEngineer.entry_salary(27))
 #   Polymorphism - Many Shapes
 # We can write a code that works on the superclass, it will work with any subclass type as well.
 # Give a way to use a class exactly like its parent, but each class keeps its own methods as they are.
+#
+# Concept that allows us to define more than one way to do something.
+# Either by using a different process for it or by using different parts to do it.
+# By overriding or overloading
 
 #   Encapsulation
 # Is the mechanism of hiding data implementation.
 # Instance variables are kept private and accessor methods are made public to achieve this.
 # With this, we restrict access to public methods (getter/setter).
 # Instance methods are kept private
+#
+# Binding properties with functions in a class - leads to data hiding
 
 #   Abstraction
 # Can be thought as a natural extension of encapsulation.
 # Applying abstraction means that each object should only expose a high-level mechanism for using it.
 # This mechanism should hide internal implementation details.
 # It should only reveal operations relevant for the other objects.
+
