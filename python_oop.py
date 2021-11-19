@@ -150,3 +150,60 @@ print(SoftwareEngineer.entry_salary(27))
 # This mechanism should hide internal implementation details.
 # It should only reveal operations relevant for the other objects.
 
+
+print("\n")
+# Python Classes and Objects || Python Tutorial || Learn Python Programming - Socratica
+import datetime
+
+
+class User:
+    # Docstring - Documentation - Help Text - to describe what the class does
+    """ A member of FriendFace. For now we are only storing their name and birthday.
+    But soon we will store an uncomfortable amount of user information. """
+
+    # initialization method or constructor
+    # this method will be called every time we create a new instance of the class
+    # self is reference to the new object that is being added
+    def __init__(self, full_name, birthday):
+        self.name = full_name
+        # y - m - d
+        self.birthday = birthday
+
+        # extract the fist and last name
+        self.first, self.last = full_name.split(' ')
+
+        # alternative way
+        name_pieces = full_name.split(' ')
+        self.first_name = name_pieces[0]
+        self.last_name = name_pieces[-1]
+
+    def age(self):
+        """ Return the age of the user in years. """
+        today = datetime.date(2021, 11, 18)
+        yyyy = int(self.birthday[0:4])
+        mm = int(self.birthday[4:6])
+        dd = int(self.birthday[6:8])
+        dob = datetime.date(yyyy, mm, dd)
+        age_in_days = (today - dob).days
+        age_in_years = age_in_days / 365
+        return int(age_in_years)
+
+
+user = User('Dave Bowman', '19710315')
+print(user.name)
+print(user.birthday, "\n")
+
+print(user.first)
+print(user.last, "\n")
+
+print(user.name)
+print(user.first_name)
+print(user.last_name)
+print(user.birthday, "\n")
+
+
+print(user.age())
+
+
+# shows the documentation of the object's class
+#help(user)
