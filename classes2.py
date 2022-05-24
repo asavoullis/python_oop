@@ -1,21 +1,21 @@
 import turtle
 import matplotlib.pyplot as plt
 import time
+import math
 
-"""
-https://www.youtube.com/watch?v=tmY6FEF8f1o
-"""
+"""https://www.youtube.com/watch?v=tmY6FEF8f1o"""
+
 
 class Polygon:
     """ Triangles Squares Pentagons Hexagons etc """
-
-    def __init__(self, sides, name, side_length=100, colour="black", line_thickness=5, x_pos=90, y_pos = 90):
+    # constructor __init__ of class runs every time we make a new object
+    def __init__(self, sides, name, side_length=100, colour="black", line_thickness=5, x_pos=90, y_pos=90):
         # we added a default value to the parameters side_length and color
         """ always when using init the first parameter we pass is self
         and then we need to think what else is important to our class.
 
         In this case we need to think what is important to a polygon.
-        For example sides and maybe we need to give it a name too.
+        For example sides, and maybe we need to give it a name too.
         """
         # The last step when initialising things is to define the parameters
         # properties
@@ -53,9 +53,10 @@ class Polygon:
             # that we initialised on the creation of our class to turn x degrees
             turtle.right(180 - self.individual_angle)
 
-
-
+        # done and mainloop are the same thing
         # turtle.done()
+        # turtle.mainloop()
+
 
 # concept of inheritance and subclassing
 # parent class and child class
@@ -80,33 +81,12 @@ class Square(Polygon):
         # for example if we set colour="black" it will always be black same as 4, which is the size
 
     def draw(self):
-        """ Overwriting the draw method """
-        # for example here we
+        """ Overwriting and extending the draw method - inherited from Polygon class """
+        turtle.fillcolor(self.colour)
         turtle.begin_fill()
+        # same thing as super - Polygon.draw()
         super().draw()
         turtle.end_fill()
-
-
-def draw_function(sides, side_length, individual_angle, line_thickness, colour, x_pos, y_pos):
-    """ How the function would look without classes """
-    # stop writing - lift the pen up
-    turtle.penup()
-    turtle.setpos(y_pos, x_pos)
-    for i in range(sides):
-        # start writing
-        turtle.pendown()
-
-        turtle.color(colour)
-        turtle.pensize(line_thickness)
-        # moves x pixels forward
-        turtle.forward(side_length)
-        # we can use the self parameter that we have passed into our class method to access the self.individual_angle
-        # that we initialised on the creation of our class to turn x degrees
-        turtle.right(180 - individual_angle)
-
-
-    turtle.pendown()
-    turtle.done()
 
 
 class Point:
@@ -135,10 +115,7 @@ class Point:
             return Point(x, y)
 
 
-
-
-
-class Shape():
+class Shape:
     """ """
 
     def __init__(self, sides, name, angle1, angle2, colour, side_length=100, line_thickness=5, x_pos=90, y_pos=90):
@@ -163,9 +140,10 @@ class Shape():
         self.angle1 = angle1
         self.angle2 = angle2
 
-
     def drawStar(self):
-        turtle.color('red')
+        turtle.clearscreen()
+        turtle.pencolor(self.colour)
+        turtle.fillcolor('yellow')
         turtle.begin_fill()
         # stop writing - lift the pen up
         turtle.penup()
@@ -174,25 +152,26 @@ class Shape():
         # set the speed that turtle draws
         turtle.speed(20)
 
-
         for i in range(self.sides):
             # start writing
             turtle.pendown()
-            turtle.color(self.colour)
             turtle.pensize(self.line_thickness)
             turtle.forward(self.angle1)
             turtle.left(self.angle2)
 
         turtle.end_fill()
-        turtle.done()
+        # turtle.done()
+
 
 def main():
-    """ Shapes"""
+    """ Shape - Star """
 
     star = Shape(50, 'Star', angle1=200, angle2=170, line_thickness=1, x_pos=-100, y_pos=0, colour='red')
-    #star.drawStar()
-
-    print('hi')
+    star.drawStar()
+    time.sleep(1)
+    # Delete all drawings and all turtles from the TurtleScreen. Reset the now empty TurtleScreen to its initial state:
+    # white background, no background image, no event bindings and tracing on.
+    turtle.clearscreen()
 
     """ Point """
 
@@ -216,15 +195,9 @@ def main():
     for i in listAZ:
         i.plot()
 
-    plt.show(block=False)
-    plt.pause(1)
-    time.sleep(7)
-    plt.close()
+    plt.show()
 
-    print('\n')
-
-    """ Polygons"""
-    turtle.Screen()
+    """ Polygons """
 
     # By feeding in these parameters 4 and squares we have created a Polygon class
     # The only thing we need to initialise the polygon object are the parameters after the self - sides and name
@@ -236,29 +209,54 @@ def main():
     print(square.sides)
     print(square.sum_interior_angles)
     print(square.individual_angle, '\n')
+    turtle.clearscreen()
     square.draw()
+    time.sleep(1)
 
     # draw_function(5, 20, 108, 4, "red")
-
+    turtle.clearscreen()
     hexagon.draw()
 
     print(pentagon.name, ':')
     print(pentagon.sides, '\n')
+    turtle.clearscreen()
     pentagon.draw()
+    time.sleep(1)
 
     # Subclassing
     # we can even pass it arguments
     square2 = Square(colour="red", side_length=250, x_pos=92, y_pos=-100)
     print("square2_subclassing:", square2.sides)
     print(square2.individual_angle, '\n')
+    turtle.clearscreen()
     square2.draw()
 
     # this leaves the screen open when done drawing -
     # if you try to draw something below this it will not be drawn it will pause of the last one, above
     turtle.done()
+    # turtle.mainloop()
 
 
 if __name__ == '__main__':
     main()
 
 
+def draw_function(sides, side_length, individual_angle, line_thickness, colour, x_pos, y_pos):
+    """ How the function would look without classes """
+    # stop writing - lift the pen up
+    turtle.penup()
+    turtle.setpos(y_pos, x_pos)
+    for i in range(sides):
+        # start writing
+        turtle.pendown()
+
+        turtle.color(colour)
+        turtle.pensize(line_thickness)
+        # moves x pixels forward
+        turtle.forward(side_length)
+        # we can use the self parameter that we have passed into our class method to access the self.individual_angle
+        # that we initialised on the creation of our class to turn x degrees
+        turtle.right(180 - individual_angle)
+
+    turtle.pendown()
+    turtle.done()
