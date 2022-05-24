@@ -163,12 +163,39 @@ class Shape:
         # turtle.done()
 
 
+    def drawCircle(self):
+        turtle.clearscreen()
+        turtle.pencolor(self.colour)
+        turtle.fillcolor('yellow')
+        turtle.begin_fill()
+        # stop writing - lift the pen up
+        turtle.penup()
+        # go to this position -
+        turtle.setpos(self.x_pos, self.y_pos)
+        # set the speed that turtle draws
+        turtle.speed(30)
+
+        for i in range(2000):
+            # start writing
+            turtle.pendown()
+            turtle.pensize(self.line_thickness)
+
+            #
+            #
+
+            turtle.forward(math.sqrt(i))
+            turtle.left(i % 180)
+
+        turtle.end_fill()
+        # turtle.done()
+
+
 def main():
     """ Shape - Star """
 
     star = Shape(50, 'Star', angle1=200, angle2=170, line_thickness=1, x_pos=-100, y_pos=0, colour='red')
     star.drawStar()
-    time.sleep(1)
+    time.sleep(2)
     # Delete all drawings and all turtles from the TurtleScreen. Reset the now empty TurtleScreen to its initial state:
     # white background, no background image, no event bindings and tracing on.
     turtle.clearscreen()
@@ -211,7 +238,7 @@ def main():
     print(square.individual_angle, '\n')
     turtle.clearscreen()
     square.draw()
-    time.sleep(1)
+    time.sleep(2)
 
     # draw_function(5, 20, 108, 4, "red")
     turtle.clearscreen()
@@ -220,8 +247,8 @@ def main():
     print(pentagon.name, ':')
     print(pentagon.sides, '\n')
     turtle.clearscreen()
-    pentagon.draw()
-    time.sleep(1)
+    #pentagon.draw()
+    time.sleep(2)
 
     # Subclassing
     # we can even pass it arguments
@@ -230,7 +257,12 @@ def main():
     print(square2.individual_angle, '\n')
     turtle.clearscreen()
     square2.draw()
+    time.sleep(2)
 
+    turtle.clearscreen()
+    circle_like_shape = Shape(0, 'Circle Kind of Shape', angle1=0, angle2=0, line_thickness=1, x_pos=-0, y_pos=0, colour='red')
+    circle_like_shape.drawCircle()
+    time.sleep(2)
     # this leaves the screen open when done drawing -
     # if you try to draw something below this it will not be drawn it will pause of the last one, above
     turtle.done()
