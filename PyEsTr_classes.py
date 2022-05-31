@@ -53,6 +53,7 @@ class Animal:
 
 class Animal2:
     # alternative way - to pass multiple arguments
+    # the constructor is used to initialise the object
     def __init__(self, **kwargs):
         self._type = kwargs['type'] if 'type' in kwargs else 'kitten'
         self._name = kwargs['name']
@@ -76,7 +77,7 @@ def print_animal(o):
 
 
 def main():
-    print(' Donald')
+    print(' Donald:')
     # we defined a variable donald from the class Duck
     # donald is the object because it was instantiated from the class
     # an instance of a class is called an object - donald
@@ -87,8 +88,10 @@ def main():
     donald.quack()
     donald.move()
 
-    print('\n', 'Daisy')
+    print('\n', 'Daisy:')
 
+    # an object is an instance of a class
+    # an object is created by calling the class as if it were a constructor
     daisy = Duck('dizzy')
     daisy.quack()
     daisy.move()
@@ -105,11 +108,10 @@ def main():
     print_animal(Animal('velociraptor', 'veronica', 'hello'))
     print('')
 
-    print('Jenny')
+    print(' Jenny:')
     a3 = Animal(type='cat', name='jenny', sound='meow')
     print(a3.sound())
 
-    print('')
-    print_animal(Animal2('velociraptor', 'veronica', 'hello'))
 
-if __name__ == '__main__': main()
+if __name__ == '__main__':
+    main()
