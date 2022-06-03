@@ -53,7 +53,7 @@ def main():
     a0.sound('bark')
     print('a0 after sound change to bark:', a0)
 
-    print('a1:',a1)
+    print('a1:', a1)
 
     # shouldn't do that as its private object variable
     # they are bound to the object, not to the class itself.
@@ -64,7 +64,7 @@ def main():
 
     # if we change the class variable like this all the objects get affected - as it's a class variable
     # x is not encapsulated - it is the same object for all objects of that class - in every instance of the class
-    a1.x[0] =7
+    a1.x[0] = 7
     print('a0.x:', a0.x)
     print('a1.x:', a1.x)
 
